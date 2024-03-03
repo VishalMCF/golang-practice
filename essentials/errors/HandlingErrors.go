@@ -33,9 +33,20 @@ Concepts:-
 
 
 4. How to create named errors?
-
+	var (
+		ErrNetwork = errors.New("network error")
+		ErrInput = errors.New("input error")
+	)
+	we can directly use the words 'ErrNetwork' and 'ErrInput' as literal values
 
 5. How to wrap errors?
+   Let's say you are working on your code where you are using a third party package. That package can throw some error
+   let's say t. Also, your code can also throw some exception let's sat y. Now if someone is using your code and experiences
+   an exception and demands the detailed information about the errors present beneath your implementation you can use the
+	concept of wrapping.
+   Wrapping is used to hold the information and pass value to the above hierarchy
+
+	For this we have to use fmt.Errorf("%w",err) where %w is the substitution for the error type.
 */
 
 type NetworkError struct {
